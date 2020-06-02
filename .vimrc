@@ -29,7 +29,7 @@ Plugin 'jmcantrell/vim-virtualenv' " activate deactivate python virtualenv plugi
 "Plugin 'psf/black' " code auto formatted with Black (works with Python 3.6 - https://github.com/psf/black) 
 " :PluginClean for these plugins
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} " status bar that displays current virtualenv, git branch, files
-" Plugin 'Xuyuanp/nerdtree-git-plugin' " git for NERDTree plugin doesn't work
+" Plugin 'Xuyuanp/nerdtree-git-plugin'git for NERDTree plugin
 " Plugin 'Valloric/YouCompleteMe'
 
 colorscheme dogrun
