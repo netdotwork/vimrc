@@ -13,7 +13,9 @@ Plugin 'gmarik/Vundle.vim'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
-
+" Plugin 'gabrielelana/vim-markdown' " https://github.com/gabrielelana/vim-markdown
+Plugin 'godlygeek/tabular' "for work with markdown plugin - https://github.com/godlygeek/tabular
+Plugin 'plasticboy/vim-markdown' " best markdown plugin - https://github.com/plasticboy/vim-markdown
 Plugin 'tmhedberg/SimpylFold' " code folding plugin
 Plugin 'vim-scripts/indentpython.vim' " auto-indentation plugin for PEP 8
 Plugin 'vim-syntastic/syntastic' " sintax plugin
@@ -29,8 +31,8 @@ Plugin 'jmcantrell/vim-virtualenv' " activate deactivate python virtualenv plugi
 "Plugin 'psf/black' " code auto formatted with Black (works with Python 3.6 - https://github.com/psf/black) 
 " :PluginClean for these plugins
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} " status bar that displays current virtualenv, git branch, files
-" Plugin 'Xuyuanp/nerdtree-git-plugin'git for NERDTree plugin
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Xuyuanp/nerdtree-git-plugin' " NERDTree git plugin for showing git status flags 
+Plugin 'Valloric/YouCompleteMe' "vim auto-complete plugin https://github.com/ycm-core/YouCompleteMe
 
 colorscheme dogrun
 
@@ -102,11 +104,11 @@ set undodir=~/.vim/undodir
 
 let g:SimpylFold_docstring_preview=1
 
-au BufRead,BufNewFile *.py,*pyw set tabstop=4
-au BufRead,BufNewFile *.py,*pyw set softtabstop=4
-au BufRead,BufNewFile *.py,*pyw set autoindent
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set expandtab
+au BufRead,BufNewFile *.py,*pyw,*md,*markdown set tabstop=4
+au BufRead,BufNewFile *.py,*pyw,*md,*markdown set softtabstop=4
+au BufRead,BufNewFile *.py,*pyw,*md,*markdown set autoindent
+au BufRead,BufNewFile *.py,*pyw,*md,*markdown set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw,*md,*markdown set expandtab
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 
@@ -138,3 +140,11 @@ let g:airline_section_y = '%{virtualenv#statusline()}'
 
 " to add fugitive plugin (for git) in statusline
 let g:airline_section_b = '%{FugitiveStatusline()}'
+
+let mapleader = ","
+
+" vim markdown plugin options - https://github.com/plasticboy/vim-markdown
+" let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_edit_url_in = 'tab'
