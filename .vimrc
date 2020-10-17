@@ -13,8 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
-" Plugin 'gabrielelana/vim-markdown' " https://github.com/gabrielelana/vim-markdown
-Plugin 'godlygeek/tabular' "for work with markdown plugin - https://github.com/godlygeek/tabular
+Plugin 'suan/vim-instant-markdown', {'rtp': 'after'} "markdown preview plugin - https://github.com/suan/vim-instant-markdown
+Plugin 'godlygeek/tabular' "for work with markdown plugin (Ctrl-p) - https://github.com/godlygeek/tabular
 Plugin 'plasticboy/vim-markdown' " best markdown plugin - https://github.com/plasticboy/vim-markdown
 Plugin 'tmhedberg/SimpylFold' " code folding plugin
 Plugin 'vim-scripts/indentpython.vim' " auto-indentation plugin for PEP 8
@@ -51,7 +51,8 @@ import sys
 if 'VIRTUAL_ENV' in os.environ:
   project_base_dir = os.environ['VIRTUAL_ENV']
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
+  #execfile(activate_this, dict(__file__=activate_this))
+  exec(open(activate_this).read(), dict(__file__=activate_this))
 EOF
 
 set splitbelow
@@ -148,3 +149,16 @@ let mapleader = ","
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_edit_url_in = 'tab'
+
+filetype plugin on
+"Uncomment to override defaults:
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+"let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
