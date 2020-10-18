@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
+" Plugin 'davidhalter/jedi-vim' "alternative for coc.nvim - https://github.com/neoclide/coc.nvim
 Plugin 'suan/vim-instant-markdown', {'rtp': 'after'} "markdown preview plugin - https://github.com/suan/vim-instant-markdown
 Plugin 'godlygeek/tabular' "for work with markdown plugin (Ctrl-p) - https://github.com/godlygeek/tabular
 Plugin 'plasticboy/vim-markdown' " best markdown plugin - https://github.com/plasticboy/vim-markdown
@@ -28,11 +29,11 @@ Plugin 'tpope/vim-fugitive' " git integration plugin
 Plugin 'vim-airline/vim-airline' " vim status bar plugin
 Plugin 'vim-airline/vim-airline-themes' " vim status bar themes
 Plugin 'jmcantrell/vim-virtualenv' " activate deactivate python virtualenv plugin
+Plugin 'Xuyuanp/nerdtree-git-plugin' " NERDTree git plugin for showing git status flags 
 "Plugin 'psf/black' " code auto formatted with Black (works with Python 3.6 - https://github.com/psf/black) 
 " :PluginClean for these plugins
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} " status bar that displays current virtualenv, git branch, files
-Plugin 'Xuyuanp/nerdtree-git-plugin' " NERDTree git plugin for showing git status flags 
-Plugin 'Valloric/YouCompleteMe' "vim auto-complete plugin https://github.com/ycm-core/YouCompleteMe
+" Plugin 'Valloric/YouCompleteMe' "vim auto-complete plugin https://github.com/ycm-core/YouCompleteMe
 
 colorscheme dogrun
 
@@ -110,7 +111,8 @@ au BufRead,BufNewFile *.py,*pyw,*md,*markdown set softtabstop=4
 au BufRead,BufNewFile *.py,*pyw,*md,*markdown set autoindent
 au BufRead,BufNewFile *.py,*pyw,*md,*markdown set shiftwidth=4
 au BufRead,BufNewFile *.py,*.pyw,*md,*markdown set expandtab
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=88
 au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 
 " for full stack development
@@ -162,3 +164,19 @@ filetype plugin on
 "let g:instant_markdown_autoscroll = 0
 "let g:instant_markdown_port = 8888
 "let g:instant_markdown_python = 1
+
+" Coc - https://www.vimfromscratch.com/articles/vim-for-python/
+nmap <silent> gd <Plug>(coc-definition)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nmap <leader>rn <Plug>(coc-rename)
+
+
